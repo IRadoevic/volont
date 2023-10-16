@@ -1,0 +1,80 @@
+
+USER {
+	id integer pk increments unique
+	username string unique
+	password string
+	email string unique
+	description text null
+	gender boolean null
+	birth_date date null
+	register_datetime datetime
+}
+
+EVENT {
+	id integer pk increments unique
+	organiser_id integer *> USER.id
+	name string
+	description text null
+	start_datetime datetime null
+	finish_datetime datetime null
+	finished boolean def(FALSE)
+	interview boolean def(FALSE)
+}
+
+VOLONTING_CATEGORY {
+	id integer pk increments unique
+	category string unique
+}
+
+EVENT_CATEGORY {
+	id integer pk increments unique
+	event_id integer >* EVENT.id
+	volonting_category_id integer >* VOLONTING_CATEGORY.id
+}
+
+REQUESTED_VOLONTER_TYPE {
+	id integer pk increments unique
+	event_id integer *> EVENT.id
+	volonter_type string
+	number_of_volonters integer null
+}
+
+EVENT_COORGANISER {
+	id integer pk increments
+	event_id integer *> EVENT.id
+	coorganiser_id integer *> USER.id
+}
+
+EVENT_PIC {
+	id integer pk increments unique
+	event_id integer *> EVENT.id
+	pic string
+}
+
+FOLLOWING {
+	id integer pk increments unique
+	followee_id integer >* USER.id
+	follower_id integer >* USER.id
+}
+
+FRIEND {
+	id integer pk increments unique
+	friend1_id integer >* USER.id
+	friend2_id integer >* USER.id
+}
+
+VOLUNTEERING {
+	id integer pk increments
+	volunter_id integer *> USER.id
+	event_id integer *> EVENT.id
+	status integer
+	apply_datetime datetime
+}
+
+INTERVIEW_APPLICATIONS {
+	id integer pk increments
+	applicant_id integer >* USER.id
+	event_id integer >* EVENT.id
+	informations text null
+}
+
