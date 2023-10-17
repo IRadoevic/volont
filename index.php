@@ -13,16 +13,20 @@
                 <div id = "search"></div>
                 <div id = "offers">
                     <div class="offerTemplate">
-                        <img src="image.png" alt="jagoda" id="slika">
+                        <div class="offerInfoDiv"> neke informacije</div>
+                        <!-- <img src="image.png" alt="jagoda" id="slika"> -->
                     </div>
                     <div class="offerTemplate">
-                        <img src="image.png" alt="jagoda" id="slika">
+                        <!-- <img src="image.png" alt="jagoda" id="slika"> -->
                     </div>
                     <div class="offerTemplate">
-                        <img src="image.png" alt="jagoda" id="slika">
+                        <!-- <img src="image.png" alt="jagoda" id="slika"> -->
                     </div>
                     <div class="offerTemplate">
-                        <img src="image.png" alt="jagoda" id="slika">
+                        <!-- <img src="image.png" alt="jagoda" id="slika"> -->
+                    </div>
+                    <div class="offerTemplate">
+                        <!-- <img src="image.png" alt="jagoda" id="slika"> -->
                     </div>
                 </div>
             </div>
