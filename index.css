@@ -1,0 +1,44 @@
+#wrapper{
+    width: 100%;
+    height:100%;
+    background-color: blue;
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh 30vh 20vh auto;
+    grid-template-areas: 
+    "header"
+    "regularOffers"
+    "search"
+    "offers";
+}
+#header{
+    grid-area: header;
+    background-color: black;
+}
+#regularOffers{
+    grid-area: regularOffers;
+    background-color: brown;
+}
+#search{
+    grid-area: search;
+    background-color: coral;
+}
+#offers{
+   grid-area: offers;
+    background-color: darkgreen;
+}
+.offerTemplate{
+    display: inline-block;
+    margin-top: 2%;
+    margin-left: calc((100vw - 990px)/6);
+    margin-right: calc((100vw - 990px)/6);
+    
+    background-color: blue;
+    height: 40vh;
+    width: 330px;
+}
+#slika{
+    /*object-fit: stretch;*/
+    width: 100%;
+    height: 100%
+}
