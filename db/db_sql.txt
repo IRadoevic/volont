@@ -1,80 +1,131 @@
+CREATE TABLE `USER` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`username` VARCHAR(255) NOT NULL UNIQUE,
+	`password` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL UNIQUE,
+	`description` TEXT,
+	`gender` BOOLEAN,
+	`birth_date` DATE,
+	`register_datetime` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-USER {
-	id integer pk increments unique
-	username string unique
-	password string
-	email string unique
-	description text null
-	gender boolean null
-	birth_date date null
-	register_datetime datetime
-}
+CREATE TABLE `EVENT` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`organiser_id` INT NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`description` TEXT,
+	`start_datetime` DATETIME,
+	`finish_datetime` DATETIME,
+	`finished` BOOLEAN NOT NULL DEFAULT false,
+	`interview` BOOLEAN NOT NULL DEFAULT false,
+	PRIMARY KEY (`id`)
+);
 
-EVENT {
-	id integer pk increments unique
-	organiser_id integer *> USER.id
-	name string
-	description text null
-	start_datetime datetime null
-	finish_datetime datetime null
-	finished boolean def(FALSE)
-	interview boolean def(FALSE)
-}
+CREATE TABLE `VOLONTING_CATEGORY` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`category` VARCHAR(255) NOT NULL UNIQUE,
+	PRIMARY KEY (`id`)
+);
 
-VOLONTING_CATEGORY {
-	id integer pk increments unique
-	category string unique
-}
+CREATE TABLE `EVENT_CATEGORY` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`event_id` INT NOT NULL,
+	`volonting_category_id` INT NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-EVENT_CATEGORY {
-	id integer pk increments unique
-	event_id integer >* EVENT.id
-	volonting_category_id integer >* VOLONTING_CATEGORY.id
-}
+CREATE TABLE `REQUESTED_VOLONTER_TYPE` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`event_id` INT NOT NULL,
+	`volonter_type` VARCHAR(255) NOT NULL,
+	`number_of_volonters` INT,
+	PRIMARY KEY (`id`)
+);
 
-REQUESTED_VOLONTER_TYPE {
-	id integer pk increments unique
-	event_id integer *> EVENT.id
-	volonter_type string
-	number_of_volonters integer null
-}
+CREATE TABLE `EVENT_COORGANISER` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`event_id` INT NOT NULL,
+	`coorganiser_id` INT NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-EVENT_COORGANISER {
-	id integer pk increments
-	event_id integer *> EVENT.id
-	coorganiser_id integer *> USER.id
-}
+CREATE TABLE `EVENT_PIC` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`event_id` INT NOT NULL,
+	`pic` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-EVENT_PIC {
-	id integer pk increments unique
-	event_id integer *> EVENT.id
-	pic string
-}
+CREATE TABLE `FOLLOWING` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`followee_id` INT NOT NULL,
+	`follower_id` INT NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-FOLLOWING {
-	id integer pk increments unique
-	followee_id integer >* USER.id
-	follower_id integer >* USER.id
-}
+CREATE TABLE `FRIEND` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+	`friend1_id` INT NOT NULL,
+	`friend2_id` INT NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-FRIEND {
-	id integer pk increments unique
-	friend1_id integer >* USER.id
-	friend2_id integer >* USER.id
-}
+CREATE TABLE `VOLUNTEERING` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`volunter_id` INT NOT NULL,
+	`event_id` INT NOT NULL,
+	`status` INT NOT NULL,
+	`apply_datetime` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-VOLUNTEERING {
-	id integer pk increments
-	volunter_id integer *> USER.id
-	event_id integer *> EVENT.id
-	status integer
-	apply_datetime datetime
-}
+CREATE TABLE `INTERVIEW_APPLICATIONS` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`applicant_id` INT NOT NULL,
+	`event_id` INT NOT NULL,
+	`informations` TEXT,
+	PRIMARY KEY (`id`)
+);
 
-INTERVIEW_APPLICATIONS {
-	id integer pk increments
-	applicant_id integer >* USER.id
-	event_id integer >* EVENT.id
-	informations text null
-}
+ALTER TABLE `EVENT` ADD CONSTRAINT `EVENT_fk0` FOREIGN KEY (`organiser_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `EVENT_CATEGORY` ADD CONSTRAINT `EVENT_CATEGORY_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+ALTER TABLE `EVENT_CATEGORY` ADD CONSTRAINT `EVENT_CATEGORY_fk1` FOREIGN KEY (`volonting_category_id`) REFERENCES `VOLONTING_CATEGORY`(`id`);
+
+ALTER TABLE `REQUESTED_VOLONTER_TYPE` ADD CONSTRAINT `REQUESTED_VOLONTER_TYPE_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+ALTER TABLE `EVENT_COORGANISER` ADD CONSTRAINT `EVENT_COORGANISER_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+ALTER TABLE `EVENT_COORGANISER` ADD CONSTRAINT `EVENT_COORGANISER_fk1` FOREIGN KEY (`coorganiser_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `EVENT_PIC` ADD CONSTRAINT `EVENT_PIC_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+ALTER TABLE `FOLLOWING` ADD CONSTRAINT `FOLLOWING_fk0` FOREIGN KEY (`followee_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `FOLLOWING` ADD CONSTRAINT `FOLLOWING_fk1` FOREIGN KEY (`follower_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `FRIEND` ADD CONSTRAINT `FRIEND_fk0` FOREIGN KEY (`friend1_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `FRIEND` ADD CONSTRAINT `FRIEND_fk1` FOREIGN KEY (`friend2_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `VOLUNTEERING` ADD CONSTRAINT `VOLUNTEERING_fk0` FOREIGN KEY (`volunter_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `VOLUNTEERING` ADD CONSTRAINT `VOLUNTEERING_fk1` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+ALTER TABLE `INTERVIEW_APPLICATIONS` ADD CONSTRAINT `INTERVIEW_APPLICATIONS_fk0` FOREIGN KEY (`applicant_id`) REFERENCES `USER`(`id`);
+
+ALTER TABLE `INTERVIEW_APPLICATIONS` ADD CONSTRAINT `INTERVIEW_APPLICATIONS_fk1` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
+
+
+
+
+
+
+
+
+
+
+
 
