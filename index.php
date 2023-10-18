@@ -12,21 +12,16 @@
                 <div id = "regularOffers"></div>
                 <div id = "search"></div>
                 <div id = "offers">
-                    <div class="offerTemplate">
-                        <div class="offerInfoDiv"> neke informacije</div>
-                        <!-- <img src="pic\image.png" alt="jagoda" id="slika"> -->
-                    </div>
-                    <div class="offerTemplate">
-                        <!-- <img src="pic\image.png" alt="jagoda" id="slika"> -->
-                    </div>
-                    <div class="offerTemplate">
-                        <!-- <img src="pic\image.png" alt="jagoda" id="slika"> -->
-                    </div>
-                    <div class="offerTemplate">
-                        <!-- <img src="pic\image.png" alt="jagoda" id="slika"> -->
-                    </div>
-                    <div class="offerTemplate">
-                        <!-- <img src="pic\image.png" alt="jagoda" id="slika"> -->
+                    <div class="container">
+                        <div class="image">
+                            <img src="image.png">
+                        </div>
+                        <div class="overlay">
+                            <p>naziv</p>
+                            <p>opis</p>
+                            <p>mesto</p>
+                            <p>vreme</p>
+                        </div>
                     </div>
                 </div>
             </div>

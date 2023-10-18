@@ -1,55 +1,42 @@
 #wrapper{
     width: 100%;
-    height:100%;
+    height:150%;
     background-color: blue;
-    display:grid;
+    /* display:grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10vh 30vh 20vh auto;
+    grid-template-rows: 10vh 30vh 20vh 700px;
     grid-template-areas: 
     "header"
     "regularOffers"
     "search"
-    "offers";
+    "offers"; */
+}
+#secondDiv{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(137, 39, 152);
 }
 #header{
     grid-area: header;
     background-color: black;
+    height: 50px;
+    width: 100%;
 }
 #regularOffers{
     grid-area: regularOffers;
     background-color: brown;
+    height: 50px;
+    width: 100%;
 }
 #search{
     grid-area: search;
     background-color: coral;
+    height: 50px;
+    width: 100%;
 }
 #offers{
-    text-align: center;
-   grid-area: offers;
-    background-color: darkgreen;
-}
-.offerTemplate{
-    display: inline-block;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 50px;
-    margin-right: 50px;
-    background: url('image.png') no-repeat;
-    background-size: 100%;
-    height: 40vh;
-    width: 330px;
-}
-.offerInfoDiv{
-    /* display: none;
-    background-color: brown; */
-}
-.offerTemplate:hover + .offerInfoDiv{
-    /* background-image: none;
-    background-color: blue;  */
-    display: block;
-}
-#slika{
-    /*object-fit: stretch;*/
+    grid-area: offers;
+    background-color: rgb(49, 137, 49);
+    height: 50px;
     width: 100%;
-    height: 100%
 }
