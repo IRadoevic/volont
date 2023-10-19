@@ -4,7 +4,7 @@
 
     function Login($username, $password)
     {
-        $query = "SELECT id, username, password FROM user WHERE user.username LIKE $username;";
+        $query = "SELECT id, username, 'password' FROM user WHERE user.username LIKE $username;";
         $user = mysqli_fetch_assoc(Con($query));
 
         if(!isset($user)) return "username";
@@ -29,6 +29,12 @@
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $register_datetime = date("Y-M-D h:m:s");
         $query = "INSERT INTO `user`(`username`, `password`, `name`, `surname`, `pic`, `email`, `description`, `gender`, `birth_date`, `register_datetime`) VALUES ('$username','$password','$name','$surname',$pic,'$email','$description',$gender,$birth_date,$register_datetime)";
+    }
+
+    function ChangeProfile($user_id, $value, $code)
+    {
+        $query = "UPDATE user SET '$code' = $value WHERE user.id = $user_id";
+        Con($query);
     }
 
 ?>
