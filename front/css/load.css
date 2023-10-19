@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+#wrapper{
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height:100%;
+    /* background-color: blue; */
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh 30vh 20vh auto;
+    grid-template-areas: 
+    "header"
+    "regularOffers"
+    "search"
+    "offers";
+}
+#header{
+    grid-area: header;
+    background-color: black;
+}
+#regularOffers{
+    grid-area: regularOffers;
+    background-color: brown;
+}
+#search{
+    grid-area: search;
+    /* background-color: coral; */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+#mainSearch{
+    width: 30vw;
+    min-width: 330px;
+    height: 60px;
+    padding-left: 30px;
+    font-size: 25px;
+    border: none;
+    outline: none;
+}
+#searchHolder{
+    border: 2px solid gray;
+}
+#filterButton{
+    background-image: url('filter-icon.png'); /* Specify the image URL */
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    width: 50px; /* Set the width and height as needed */
+    height: 50px;
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    color: transparent;
+}
+#searchButton{
+    background-image: url('search.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+}
+#offers{
+    text-align: center;
+    grid-area: offers;
+    /* background-color: darkgreen; */
+}
+.offerTemplate{
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background: url('image.png') no-repeat;
+    background-size: 100%;
+    height: 40vh;
+    width: 330px;
+}
+
+
+.container {
+    position: relative;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 40vh;
+    width: 330px;
+    overflow: hidden;
+    background-color: rgb(229, 192, 81);
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .overlay p {
+    color: white;
+    text-align: center;
+  }
+  
+  .container:hover .overlay {
+    display: flex;
+  }
