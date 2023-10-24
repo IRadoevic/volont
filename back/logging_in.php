@@ -8,19 +8,21 @@
     <body>
         <h1> Logging in... </h1>
         <?php
-            
-            include_once("../back/log_reg.php");
+            include_once("log_reg.php");
 
             $username = $_POST['username'];
             $password = $_POST['password'];
 
             $value = Login($username, $password);
-            if($value == 'username') header("?error_code='username'");
-            else if($value == 'password') header("?error_code='password'")
-            else
+            switch($value)
             {
-                $_SESSION['id'] = $value;
-                header("")
+                case "username":
+                    header("Location: ../index.php?error_type=log&error_code=username");
+                case "password":
+                    header("Location: ../index.php?error_type=log&error_code=password");
+                default:
+                    $_SESSION['id'] = $value;
+                    header("Location: ../index.php");
             }
         
         ?>
