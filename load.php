@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="front\css\load.css">
+        <link rel="stylesheet" href="front\css\index.css">
         <title>Document</title>
     </head>
     <body>
@@ -18,42 +18,19 @@
                     </div>
                 </div>
                 <div id = "offers">
-                    <div class="container">
-                        <div class="image">
-                            <img src="image.png">
-                        </div>
-                        <div class="overlay">
-                            <p>naziv</p>
-                            <p>opis</p>
-                            <p>mesto</p>
-                            <p>vreme</p>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="image">
-                            <img src="image.png">
-                        </div>
-                        <div class="overlay">
-                            <p>naziv</p>
-                            <p>opis</p>
-                            <p>mesto</p>
-                            <p>vreme</p>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="image">
-                            <img src="image.png">
-                        </div>
-                        <div class="overlay">
-                            <p>naziv</p>
-                            <p>opis</p>
-                            <p>mesto</p>
-                            <p>vreme</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <!-- <?php
+                    include_once("back/db\-coon.php");
+                        include_once("back/display_card.php");
 
-    
+                        $query = "SELECT id FROM 'event';";
+                        $events = Con($query);
+                        for($i = 0; i < mysqli_num_rows($events); $i++)
+                        {
+                            $event = mysqli_fetch_assoc($events);
+                            echo display_card($event['id']);
+                        }
+                    ?> -->
+                </div>
+            </div>    
     </body>
 </html>

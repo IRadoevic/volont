@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" href="C:\xampp\htdocs\volont-oktobar\volont\front\css">
+        <link rel="stylesheet" href="C:\xampp\htdocs\volont-oktobar\volont\front\css\pocetna.css">
         <!-- <link rel="stylesheet" type="text/css" href="front\css\pocetna.css"> -->
         <title>Document</title>
     </head>
