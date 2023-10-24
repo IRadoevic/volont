@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -37,7 +36,7 @@ CREATE TABLE `event` (
   `finish_datetime` datetime DEFAULT NULL,
   `finished` tinyint(1) NOT NULL DEFAULT '0',
   `interview` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -49,7 +48,7 @@ CREATE TABLE `event_category` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `volonting_category_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -61,7 +60,7 @@ CREATE TABLE `event_coorganiser` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `coorganiser_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,7 @@ CREATE TABLE `event_pic` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `pic` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -85,7 +84,7 @@ CREATE TABLE `following` (
   `id` int NOT NULL,
   `followee_id` int NOT NULL,
   `follower_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -97,7 +96,7 @@ CREATE TABLE `friend` (
   `id` int NOT NULL,
   `friend1_id` int NOT NULL,
   `friend2_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -110,7 +109,7 @@ CREATE TABLE `interview_applications` (
   `applicant_id` int NOT NULL,
   `event_id` int NOT NULL,
   `informations` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -123,7 +122,7 @@ CREATE TABLE `requested_volonter_type` (
   `event_id` int NOT NULL,
   `volonter_type` varchar(255) NOT NULL,
   `number_of_volonters` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -143,7 +142,7 @@ CREATE TABLE `user` (
   `gender` tinyint(1) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   `register_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -154,7 +153,7 @@ CREATE TABLE `user` (
 CREATE TABLE `volonting_category` (
   `id` int NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -168,7 +167,7 @@ CREATE TABLE `volunteering` (
   `event_id` int NOT NULL,
   `status` int NOT NULL,
   `apply_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -404,136 +403,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-=======
-CREATE TABLE `USER` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`username` VARCHAR(255) NOT NULL UNIQUE,
-	`password` VARCHAR(255) NOT NULL,
-	`email` VARCHAR(255) NOT NULL UNIQUE,
-	`description` TEXT,
-	`gender` BOOLEAN,
-	`birth_date` DATE,
-	`register_datetime` DATETIME NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `EVENT` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`organiser_id` INT NOT NULL,
-	`name` VARCHAR(255) NOT NULL,
-	`description` TEXT,
-	`start_datetime` DATETIME,
-	`finish_datetime` DATETIME,
-	`finished` BOOLEAN NOT NULL DEFAULT 'FALSE',
-	`interview` BOOLEAN NOT NULL DEFAULT 'FALSE',
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `VOLONTING_CATEGORY` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`category` VARCHAR(255) NOT NULL UNIQUE,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `EVENT_CATEGORY` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`event_id` INT NOT NULL,
-	`volonting_category_id` INT NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `REQUESTED_VOLONTER_TYPE` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`event_id` INT NOT NULL,
-	`volonter_type` VARCHAR(255) NOT NULL,
-	`number_of_volonters` INT,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `EVENT_COORGANISER` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`event_id` INT NOT NULL,
-	`coorganiser_id` INT NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `EVENT_PIC` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`event_id` INT NOT NULL,
-	`pic` VARCHAR(255) NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `FOLLOWING` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`followee_id` INT NOT NULL,
-	`follower_id` INT NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `FRIEND` (
-	`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
-	`friend1_id` INT NOT NULL,
-	`friend2_id` INT NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `VOLUNTEERING` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`volunter_id` INT NOT NULL,
-	`event_id` INT NOT NULL,
-	`status` INT NOT NULL,
-	`apply_datetime` DATETIME NOT NULL,
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `INTERVIEW_APPLICATIONS` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`applicant_id` INT NOT NULL,
-	`event_id` INT NOT NULL,
-	`informations` TEXT,
-	PRIMARY KEY (`id`)
-);
-
-ALTER TABLE `EVENT` ADD CONSTRAINT `EVENT_fk0` FOREIGN KEY (`organiser_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `EVENT_CATEGORY` ADD CONSTRAINT `EVENT_CATEGORY_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-ALTER TABLE `EVENT_CATEGORY` ADD CONSTRAINT `EVENT_CATEGORY_fk1` FOREIGN KEY (`volonting_category_id`) REFERENCES `VOLONTING_CATEGORY`(`id`);
-
-ALTER TABLE `REQUESTED_VOLONTER_TYPE` ADD CONSTRAINT `REQUESTED_VOLONTER_TYPE_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-ALTER TABLE `EVENT_COORGANISER` ADD CONSTRAINT `EVENT_COORGANISER_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-ALTER TABLE `EVENT_COORGANISER` ADD CONSTRAINT `EVENT_COORGANISER_fk1` FOREIGN KEY (`coorganiser_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `EVENT_PIC` ADD CONSTRAINT `EVENT_PIC_fk0` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-ALTER TABLE `FOLLOWING` ADD CONSTRAINT `FOLLOWING_fk0` FOREIGN KEY (`followee_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `FOLLOWING` ADD CONSTRAINT `FOLLOWING_fk1` FOREIGN KEY (`follower_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `FRIEND` ADD CONSTRAINT `FRIEND_fk0` FOREIGN KEY (`friend1_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `FRIEND` ADD CONSTRAINT `FRIEND_fk1` FOREIGN KEY (`friend2_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `VOLUNTEERING` ADD CONSTRAINT `VOLUNTEERING_fk0` FOREIGN KEY (`volunter_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `VOLUNTEERING` ADD CONSTRAINT `VOLUNTEERING_fk1` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-ALTER TABLE `INTERVIEW_APPLICATIONS` ADD CONSTRAINT `INTERVIEW_APPLICATIONS_fk0` FOREIGN KEY (`applicant_id`) REFERENCES `USER`(`id`);
-
-ALTER TABLE `INTERVIEW_APPLICATIONS` ADD CONSTRAINT `INTERVIEW_APPLICATIONS_fk1` FOREIGN KEY (`event_id`) REFERENCES `EVENT`(`id`);
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 94f9ad68ff2a47f3dde5a5db9a7c42a6700ff79a
