@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2023 at 12:05 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Oct 24, 2023 at 08:59 PM
+-- Server version: 8.0.27
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `event` (
-  `id` int(11) NOT NULL,
-  `organiser_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `organiser_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `start_datetime` datetime DEFAULT NULL,
   `finish_datetime` datetime DEFAULT NULL,
-  `finished` tinyint(1) NOT NULL DEFAULT 0,
-  `interview` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `finished` tinyint(1) NOT NULL DEFAULT '0',
+  `interview` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -45,10 +45,10 @@ CREATE TABLE `event` (
 --
 
 CREATE TABLE `event_category` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `volonting_category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `volonting_category_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -57,10 +57,10 @@ CREATE TABLE `event_category` (
 --
 
 CREATE TABLE `event_coorganiser` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `coorganiser_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `coorganiser_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -69,10 +69,10 @@ CREATE TABLE `event_coorganiser` (
 --
 
 CREATE TABLE `event_pic` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `event_id` int NOT NULL,
   `pic` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -81,10 +81,10 @@ CREATE TABLE `event_pic` (
 --
 
 CREATE TABLE `following` (
-  `id` int(11) NOT NULL,
-  `followee_id` int(11) NOT NULL,
-  `follower_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `followee_id` int NOT NULL,
+  `follower_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -93,10 +93,10 @@ CREATE TABLE `following` (
 --
 
 CREATE TABLE `friend` (
-  `id` int(11) NOT NULL,
-  `friend1_id` int(11) NOT NULL,
-  `friend2_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `friend1_id` int NOT NULL,
+  `friend2_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -105,11 +105,11 @@ CREATE TABLE `friend` (
 --
 
 CREATE TABLE `interview_applications` (
-  `id` int(11) NOT NULL,
-  `applicant_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `informations` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `applicant_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `informations` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -118,11 +118,11 @@ CREATE TABLE `interview_applications` (
 --
 
 CREATE TABLE `requested_volonter_type` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `event_id` int NOT NULL,
   `volonter_type` varchar(255) NOT NULL,
-  `number_of_volonters` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `number_of_volonters` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -131,18 +131,18 @@ CREATE TABLE `requested_volonter_type` (
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
-  `pic` int(11) NOT NULL,
+  `pic` int NOT NULL,
   `email` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `gender` tinyint(1) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   `register_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -151,9 +151,9 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `volonting_category` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -162,12 +162,12 @@ CREATE TABLE `volonting_category` (
 --
 
 CREATE TABLE `volunteering` (
-  `id` int(11) NOT NULL,
-  `volunter_id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `volunter_id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `status` int NOT NULL,
   `apply_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -273,67 +273,67 @@ ALTER TABLE `volunteering`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event_category`
 --
 ALTER TABLE `event_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event_coorganiser`
 --
 ALTER TABLE `event_coorganiser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event_pic`
 --
 ALTER TABLE `event_pic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `friend`
 --
 ALTER TABLE `friend`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `interview_applications`
 --
 ALTER TABLE `interview_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `requested_volonter_type`
 --
 ALTER TABLE `requested_volonter_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `volonting_category`
 --
 ALTER TABLE `volonting_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `volunteering`
 --
 ALTER TABLE `volunteering`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

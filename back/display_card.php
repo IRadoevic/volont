@@ -3,7 +3,7 @@
 
     function DisplayEventCard($event_id)
     {
-        $query = "SELECT * FROM 'event' WHERE event.id LIKE $event_id";
+        /*$query = "SELECT * FROM 'event' WHERE event.id LIKE $event_id";
         $event = mysqli_fetch_assoc(Con($query));
         $html = '<div class="container">
                     <div class="image">
@@ -16,7 +16,8 @@
                         <p>'.$event['finish_datetime'].'</p>
                     </div>
                 </div>';
-        return $html;
+        return $html;*/
+        return 1;
     }
 
 ?>
