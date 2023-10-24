@@ -21,12 +21,12 @@
                     <?php
                         include_once("back/display_card.php");
 
-                        $query = "SELECT id FROM 'event';";
+                        $query = 'SELECT id FROM `event`;';
                         $events = Con($query);
-                        for($i = 0; i < mysqli_num_rows($events); $i++)
+                        for($i = 0; $i < mysqli_num_rows($events); $i++)
                         {
                             $event = mysqli_fetch_assoc($events);
-                            echo display_card($event['id']);
+                            echo DisplayEventCard($event['id']);
                         }
                     ?>
                 </div>
