@@ -36,7 +36,7 @@
 
             <div id="register-form">
                 <h2>Register</h2>
-                <form action="register.php" method="POST">
+                <form action="back\registering.php" method="POST">
                     <label for="username">Username:</label>
                     <input type="text" name="username" required>
                     <br>
@@ -51,7 +51,7 @@
                     <input type="text" name="description">
                     <input type="radio" name="gender" value="z">
                     <input type="radio" name="gender" value="m">
-                    <input type="date">
+                    <input type="date" name="birth_date">
                     <br>
                     <input type="submit" value="Register">
                 </form>
