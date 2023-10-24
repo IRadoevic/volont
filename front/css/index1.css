@@ -21,6 +21,16 @@ body {
     grid-area: header;
     background-color: black;
 }
+.navigation{
+  align-items: center;
+  padding-right: 10px;
+  display: flex;
+  font-size: 25px;
+  /* width: 50px; */
+  background-color: blue;
+  float: right;
+  height: 100%;
+}
 #regularOffers{
     grid-area: regularOffers;
     background-color: brown;

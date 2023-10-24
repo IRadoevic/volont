@@ -8,7 +8,9 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id = "header"></div>
+            <div id = "header">
+                <div class="navigation" id="logReg">Uloguj se</div>
+            </div>
             <div id = "regularOffers"></div>
             <div id = "search">
                 <div id="searchHolder">

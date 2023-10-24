@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="front\css\load.css">
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     
