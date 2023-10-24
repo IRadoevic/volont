@@ -36,15 +36,22 @@
 
             <div id="register-form">
                 <h2>Register</h2>
-                <form action="register.php" method="post">
-                    <label for="new-username">New Username:</label>
-                    <input type="text" id="new-username" name="new-username" required>
+                <form action="register.php" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" required>
                     <br>
-                    <label for="new-password">New Password:</label>
-                    <input type="password" id="new-password" name="new-password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" required>
                     <br>
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <label for="name"></label>
+                    <input type="text" name="name">
+                    <input type="text" name="surname">
+                    <input type="file" name="pic">
+                    <input type="email" name="email">
+                    <input type="text" name="description">
+                    <input type="radio" name="gender" value="z">
+                    <input type="radio" name="gender" value="m">
+                    <input type="date">
                     <br>
                     <input type="submit" value="Register">
                 </form>
