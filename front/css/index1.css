@@ -31,6 +31,19 @@ body {
   float: right;
   height: 100%;
 }
+#register-form{
+    display: none;
+    position: absolute;
+    top: 10vh;
+    right: 0;
+}
+
+#login-form{
+  display: none;
+  position: absolute;
+  top: 10vh;
+  right: 0;
+}
 #regularOffers{
     grid-area: regularOffers;
     background-color: brown;

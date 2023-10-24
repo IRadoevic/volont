@@ -20,8 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="login-form">
+            <div id="login-form">
                 <h2>Login</h2>
                 <form action="login.php" method="post">
                     <label for="username">Username:</label>
@@ -31,10 +30,11 @@
                     <input type="password" id="password" name="password" required>
                     <br>
                     <input type="submit" value="Login">
+                    <p id="goToReg">Nemate nalog?</p>
                 </form>
             </div>
 
-            <div class="register-form">
+            <div id="register-form">
                 <h2>Register</h2>
                 <form action="register.php" method="post">
                     <label for="new-username">New Username:</label>
@@ -49,7 +49,6 @@
                     <input type="submit" value="Register">
                 </form>
             </div>
-        </div>
         <div id = "offers">
             <?php
                 include_once("back/display_card.php");
@@ -63,5 +62,25 @@
                 }
             ?>
         </div>
+
+        <script>
+            const dugme = document.getElementById("logReg");
+            const forma1 = document.getElementById("login-form");
+            const forma2 = document.getElementById("register-form");
+            const switchToReg = document.getElementById("goToReg")
+// const formContainer = document.getElementById("loginRegisterForm");
+            dugme.addEventListener("click", function() {
+                if (forma1.style.display === "block" || forma2.style.display === "block") {
+                        forma1.style.display = "none";
+                        forma2.style.display = "none"
+                    } else {
+                        forma1.style.display = "block";
+                    }
+            });
+            switchToReg.addEventListener("click", function(){
+                forma1.style.display = "none";
+                forma2.style.display = "block"
+            })
+        </script>
     </body>
 </html>
