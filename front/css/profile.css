@@ -79,25 +79,69 @@ button{
 #rest{
     grid-area: rest;
 }
-#hosIfNE{
+#host{
     padding-left: 15px;
     padding-top: 20px;
 }
-#templateCarousel{
+#templateCarousel1{
     display: grid;
     grid-template-columns: 5vw 1fr 5vw;
     grid-template-areas: 
-    "previous carousel next";
+    "previous1 carousel1 next1";
     align-items: center;
 }
-#previous{
-    grid-area: previous;
+#previous1{
+    grid-area: previous1;
 }
-#carousel-containerl{
-    grid-area: carousel;
+#carousel-containerl1{
+    grid-area: carousel1;
 }
-#next{
-    grid-area: next;
+#next1{
+    grid-area: next1;
+}
+#cardForNoHostedEvents{
+    margin-top: 10px;
+    background-color: brown;
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+    display: none;
+    height: 20vw;
+    width: 15vw;
+    font-size:calc(10px + 0.8vw);
+}
+
+
+#participant{
+    padding-left: 15px;
+    padding-top: 20px;
+}
+#templateCarousel2{
+    display: grid;
+    grid-template-columns: 5vw 1fr 5vw;
+    grid-template-areas: 
+    "previous2 carousel2 next2";
+    align-items: center;
+}
+#previous2{
+    grid-area: previous2;
+}
+#carousel-containerl2{
+    grid-area: carousel2;
+}
+#next2{
+    grid-area: next2;
+}
+#cardForNoHostedEvents{
+    margin-top: 10px;
+    background-color: brown;
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+    display: none;
+    height: 20vw;
+    width: 15vw;
+    font-size:calc(10px + 0.8vw);
 }
 .subtitle{
     font-size: 30px;
