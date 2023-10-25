@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     include_once("db_con.php");
 
     function Login($username, $password)
@@ -27,8 +27,20 @@
         if(isset($same_user)) return "taken";
 
         $hashed_password = hash('sha256', $password);
+
         $register_datetime = date("Y-m-d h:m:s");
-        $query = "INSERT INTO `user` (`username`, `password`, `name`, `surname`, `pic`, `email`, `description`, `gender`, `birth_date`, `register_datetime`) VALUES ('$username','$hashed_password','$name','$surname','1','$email','$description','1','$birth_date','$register_datetime');";
+        $_SESSION['pic'] = +is_uploaded_file($_FILES['pic']['tmp_name']);
+        if(!isset($pic)) $pic = $gender + 1;
+        else{
+            $location = "../pic/profile/user/$username";    
+            if(move_uploaded_file($pic['pic']['tmp_name'], $location))
+                $_SESSION['pic'] = 123;
+            else
+               // $_SESSION['pic'] = 321;
+            $pic = 0;
+        }
+
+        $query = "INSERT INTO `user` (`username`, `password`, `name`, `surname`, `pic`, `email`, `description`, `gender`, `birth_date`, `register_datetime`) VALUES ('$username','$hashed_password','$name','$surname','$pic ','$email','$description','$gender','$birth_date','$register_datetime');";
         Con($query);
     }
 

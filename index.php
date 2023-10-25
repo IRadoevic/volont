@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,6 +11,9 @@
         <title>Document</title>
     </head>
     <body>
+        <?php
+            echo $_SESSION["pic"];
+        ?>
         <div id="wrapper">
             <div id = "header">
                 <div class="navigation" id="logReg">Uloguj se</div>
@@ -50,8 +56,8 @@
                     <input type="file" name="pic">
                     <input type="email" name="email">
                     <input type="text" name="description">
-                    <input type="radio" name="gender" value="z">
-                    <input type="radio" name="gender" value="m">
+                    <input type="radio" name="gender" value="0">
+                    <input type="radio" name="gender" value="1">
                     <input type="date" name="birth_date">
                     <br>
                     <input type="submit" value="Register">

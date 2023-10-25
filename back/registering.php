@@ -15,10 +15,10 @@
             $password = $_POST['password'];
             $name = $_POST['name'];
             $surname = $_POST['surname'];
-            $pic = $_POST['pic'];
+            $pic = $_FILES;
             $email = $_POST['email'];
             $description = $_POST['description'];
-            $gender = $_POST['gender'];
+            $gender =  $_POST['gender'];
             $birth_date = $_POST['birth_date'];
 
             $value = Register($username, $password, $name, $surname, $pic, $email, $description, $gender, $birth_date);
@@ -36,7 +36,7 @@
                 case "taken":
                     header("Location: ../index.php?error_type=reg&error_code=taken");
                 default:
-                    _SESSION['id'] = Login($username, $password);
+                    $_SESSION['id'] = Login($username, $password);
                     header("Location: ../index.php");
             }
 
