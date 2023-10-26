@@ -15,7 +15,7 @@
             $password = $_POST['password'];
             $name = $_POST['name'];
             $surname = $_POST['surname'];
-            $pic = $_FILES;
+            $pic = $_FILES['pic'];
             $email = $_POST['email'];
             $description = $_POST['description'];
             $gender =  $_POST['gender'];
@@ -37,7 +37,8 @@
                     header("Location: ../index.php?error_type=reg&error_code=taken");
                 default:
                     $_SESSION['id'] = Login($username, $password);
-                    header("Location: ../index.php");
+                    //header("Location: ../index.php");
+                    var_dump($pic);
             }
 
         ?>

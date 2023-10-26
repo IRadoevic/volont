@@ -13,6 +13,7 @@
     <body>
         <?php
             echo $_SESSION["pic"];
+            echo $_SESSION["error"];
         ?>
         <div id="wrapper">
             <div id = "header">
@@ -43,7 +44,7 @@
 
             <div id="register-form">
                 <h2>Register</h2>
-                <form action="back\registering.php" method="POST">
+                <form action="back\registering.php" method="POST"  enctype="multipart/form-data">
                     <label for="username">Username:</label>
                     <input type="text" name="username" required>
                     <br>
