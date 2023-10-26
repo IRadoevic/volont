@@ -11,10 +11,6 @@
         <title>Document</title>
     </head>
     <body>
-        <?php
-            echo $_SESSION["pic"];
-            echo $_SESSION["error"];
-        ?>
         <div id="wrapper">
             <div id = "header">
                 <div class="navigation" id="logReg">Uloguj se</div>

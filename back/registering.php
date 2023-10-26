@@ -37,8 +37,8 @@
                     header("Location: ../index.php?error_type=reg&error_code=taken");
                 default:
                     $_SESSION['id'] = Login($username, $password);
-                    //header("Location: ../index.php");
-                    var_dump($pic);
+                    header("Location: ../index.php");
+                    //var_dump($pic);
             }
 
         ?>
