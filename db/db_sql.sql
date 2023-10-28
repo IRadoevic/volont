@@ -36,7 +36,7 @@ CREATE TABLE `event` (
   `finish_datetime` datetime DEFAULT NULL,
   `finished` tinyint(1) NOT NULL DEFAULT '0',
   `interview` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE `event_category` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `volonting_category_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `event_coorganiser` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `coorganiser_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE `event_pic` (
   `id` int NOT NULL,
   `event_id` int NOT NULL,
   `pic` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE `following` (
   `id` int NOT NULL,
   `followee_id` int NOT NULL,
   `follower_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,7 @@ CREATE TABLE `friend` (
   `id` int NOT NULL,
   `friend1_id` int NOT NULL,
   `friend2_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ CREATE TABLE `interview_applications` (
   `applicant_id` int NOT NULL,
   `event_id` int NOT NULL,
   `informations` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE `requested_volonter_type` (
   `event_id` int NOT NULL,
   `volonter_type` varchar(255) NOT NULL,
   `number_of_volonters` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -142,7 +142,7 @@ CREATE TABLE `user` (
   `gender` tinyint(1) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
   `register_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -153,7 +153,7 @@ CREATE TABLE `user` (
 CREATE TABLE `volonting_category` (
   `id` int NOT NULL,
   `category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -167,7 +167,7 @@ CREATE TABLE `volunteering` (
   `event_id` int NOT NULL,
   `status` int NOT NULL,
   `apply_datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables

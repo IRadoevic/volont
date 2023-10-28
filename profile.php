@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +37,8 @@
                     include_once("back/display_card.php");
 
                     $data = array();
-                    $query = 'SELECT * FROM `event`;';
+                    $query = 'SELECT * FROM `event` LEFT JOIN event_coorganiser ON event_coorganiser.event_id = `event`.id WHERE `event`.organiser_id = '.$_SESSION['id'].' OR event_coorganiser.coorganiser_id = '.$_SESSION['id'].';';
+                    //$query = 'SELECT * FROM `event`;';
                     $events = Con($query);
                     echo "<script>let databaseData1 = [];</script>";
                     for($i = 0; $i < mysqli_num_rows($events); $i++)
