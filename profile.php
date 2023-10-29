@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once("back/display_card.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,27 +15,40 @@
 <body>
     <div id="wrapper">
 
-        <div id="header">
+        <?php
+            $query = 'SELECT * FROM `user` WHERE id = '.$_SESSION['id'].';';
+            $user = mysqli_fetch_assoc(Con($query));
+            if($user['pic'] == 0)
+                if($user['gender'])
+                    $pic = 'pic/profile/sterling.png';
+                else
+                    $pic = 'pic/profile/lana.png';
+            else
+                $pic = 'pic/profile/user/'.$user['username'].'.jpg';
+            
+                echo '<div id="header">
             <p class="subtitle">Moj profil</p>
         </div>
         <div id="basicInfo">
-            <div id="picture"></div>
+            <div id="picture" style = "background-image: url(\''.$pic.'\')"></div>
             <div id="myInfo">
                 <div id="myUserName">
-                    <p>@username</p>
+                    <p>@'.$user['username'].'</p>
                     <button id="buttonEdit">Uredi profil</button>
                 </div>
-                <div id="myName">mojeIme</div>
-                <div id="mySurname">mojePrezime</div>
-                <div id="myDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia architecto quam eius optio animi explicabo reprehenderit minima consectetur culpa facilis. Architecto</div>
+                <div id="myName">'.$user['name'].'</div>
+                <div id="mySurname">'.$user['surname'].'</div>
+                <div id="myDescription">'.$user['description'].'</div>
             </div>
-        </div>
+        </div>';
+
+        ?>
+        
         <div id="rest">
             <div id="host" class="subtitle">
                 <p>Moji dogadjaji</p>
                 
                 <?php
-                    include_once("back/display_card.php");
 
                     $data = array();
                     $query = 'SELECT * FROM `event` LEFT JOIN event_coorganiser ON event_coorganiser.event_id = `event`.id WHERE `event`.organiser_id = '.$_SESSION['id'].' OR event_coorganiser.coorganiser_id = '.$_SESSION['id'].';';
@@ -72,7 +86,7 @@
                     include_once("back/display_card.php");
 
                     $data = array();
-                    $query = 'SELECT * FROM `event`;';
+                    $query = 'SELECT * FROM `event` INNER JOIN volunteering ON event.id = volunteering.event_id WHERE volunteering.volunter_id = '.$_SESSION['id'].';';
                     $events = Con($query);
                     echo "<script>let databaseData2 = [];</script>";
                     for($i = 0; $i < mysqli_num_rows($events); $i++)

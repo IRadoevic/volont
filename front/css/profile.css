@@ -36,7 +36,8 @@ body {
     grid-area: picture;
     /* background-color: blue; */
     /* padding: 15px; */
-    background: url('lana.jpg') no-repeat;
+    background-image: url('lana.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
 }
 #myInfo{
